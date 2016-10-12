@@ -157,6 +157,17 @@ public class MainScript : MonoBehaviour {
 
     void DifficultyUp()
     {
-        ConfigurationScript.baseSpeed += 1;
+        CancelInvoke("SpawnEnemies");
+        CancelInvoke("SpawnCoins");
+        CancelInvoke("SpawnVictims");
+
+        ConfigurationScript.baseSpeed += ConfigurationScript.baseSpeed < 20 ? 1 : 0;
+        ConfigurationScript.enemySpawnTime -= ConfigurationScript.enemySpawnTime > 0.5 ? 0.2f : 0;
+        ConfigurationScript.coinSpawnTime -= ConfigurationScript.coinSpawnTime > 5 ? 0.1f : 0;
+        ConfigurationScript.victimSpawnTime -= ConfigurationScript.coinSpawnTime > 5 ? 0.2f : 0;
+
+        InvokeRepeating("SpawnEnemies", ConfigurationScript.enemySpawnTime, ConfigurationScript.enemySpawnTime);
+        InvokeRepeating("SpawnCoins", ConfigurationScript.coinSpawnTime, ConfigurationScript.coinSpawnTime);
+        InvokeRepeating("SpawnVictims", ConfigurationScript.victimSpawnTime, ConfigurationScript.victimSpawnTime);
     }
 }

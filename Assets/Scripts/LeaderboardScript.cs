@@ -3,13 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class LeaderboardScript : MonoBehaviour {
 
     private HandleScore _handleScore = new HandleScore();
     private bool resetLeaderboard = false; // CUIDADO AQUI
-    public bool fadeIn = true, inputEndA = false, inputEndB = false, inputEndC = false, finishedTyping = false;
-    public Text inputTextA, inputTextB, inputTextC;
+    public bool fadeIn = true, inputEndA = false, inputEndB = false, inputEndC = false, finishedTyping = true;
+    public Text inputTextA, inputTextB, inputTextC, actionText;
     public GameObject input;
     public int index = 0;
     public List<TypeValue> typeList = new List<TypeValue>();
@@ -28,36 +29,45 @@ public class LeaderboardScript : MonoBehaviour {
             });
         }
 
-        if (!resetLeaderboard)
+        if (ConfigurationScript.score > 0)
         {
-            if (ConfigurationScript.score > 0)
-            {
-                _handleScore.AddScore("---");
-            }
-
-            leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
-
-            for (int i = 0; i < leaderboard.Count; i++)
-            {
-                transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
-                transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
-            }
+            _handleScore.AddScore("---");
         }
-        else
-            ResetLeaderboard();
+
+        leaderboard = _handleScore.GetScore().OrderByDescending(x => x.score).ToList();
+
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            transform.Find("Names/Name" + i).GetComponent<Text>().text = leaderboard[i].name;
+            transform.Find("Scores/Score" + i).GetComponent<Text>().text = leaderboard[i].score.ToString();
+        }
 
         var gotHighScore = leaderboard.Where(x => x.name == "---");
         if (gotHighScore.Count() > 0)
         {
+            finishedTyping = false;
             input.SetActive(true);
             input.transform.position = transform.Find("Names/Name" + gotHighScore.First().rank).position;
             transform.Find("Names/Name" + gotHighScore.First().rank).gameObject.SetActive(false);
             InvokeRepeating("BlinkText", 0, 0.3f);
         }
+        else
+            finishedTyping = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (finishedTyping)
+            actionText.text = "Back to menu";
+        else
+            actionText.text = "Confirm";
+
+        if (Input.GetButtonDown("Jump") && finishedTyping)
+        {
+            ConfigurationScript.score = 0;
+            SceneManager.LoadScene("IntroScene");
+        }
+
         if (Input.GetButtonDown("Jump") && index <= 2)
         {
             switch (index)
@@ -68,14 +78,18 @@ public class LeaderboardScript : MonoBehaviour {
                 case 1:
                     EndInputBlink(ref inputEndB);
                     break;
-                default:
+                case 2:
                     EndInputBlink(ref inputEndC);
+                    finishedTyping = true;
                     break;
             }
             index++;
         }
 
         StartCoroutine(TextSwap());
+
+        if (Input.GetKey(KeyCode.F12))
+            ResetLeaderboard();
     }
 
     void ResetLeaderboard()

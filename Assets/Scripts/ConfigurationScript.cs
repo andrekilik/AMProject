@@ -5,7 +5,7 @@ public class ConfigurationScript : MonoBehaviour {
 
     public static float shoalTriggerPosition = -7, shoalAwakeXPosition = -10.3f, baseMovement = 1, baseSpeed = 7
         , minSpawnYPosition = -3.3f, maxSpawnYPosition = 3.3f, victimSpeed = 2, DangerYPos = 1.7f, BixaoYStartPos = 20f
-        , difficultyUp = 15, EnterBossFight = 60, DangerTime = 50;
+        , difficultyUp = 15, EnterBossFight = 90, DangerTime = 80;
     public static int score, bulletLimit = 3, victimsCollected;
     public static List<string> charList = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
