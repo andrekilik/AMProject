@@ -4,6 +4,7 @@ using System.Collections;
 public class Octopus : BaseBehaviour {
 
     private float coolDown;
+	private SpriteRenderer octSprite;
     public GameObject tinta;
 
     // Use this for initialization
@@ -11,6 +12,8 @@ public class Octopus : BaseBehaviour {
     {
         base.Start();
         coolDown = 1;
+		octSprite = GetComponent<SpriteRenderer> ();
+//		octSprite.flipX;
     }
 
     // Update is called once per frame
