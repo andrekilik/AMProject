@@ -10,8 +10,8 @@ public class MainScript : MonoBehaviour {
     private List<GameObject> coinPatternsList = new List<GameObject>();
     public GameObject VictimGO, DropZoneGO;
 	public bool paused, dangerTimeVisibility, dangerFadeIn = false;
-    public Text score, dangerTime;
-    public Image dashFill;
+    public Text score, dangerTime, pauseTxt;
+    public Image dashFill, pauseImg;
     private Player playerScript;
 
     // Use this for initialization
@@ -34,6 +34,8 @@ public class MainScript : MonoBehaviour {
         InvokeRepeating("DifficultyUp", ConfigurationScript.difficultyUp, ConfigurationScript.difficultyUp);
 
         paused = false;
+		pauseImg.gameObject.SetActive (false);
+		pauseTxt.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -117,10 +119,14 @@ public class MainScript : MonoBehaviour {
 		if (Input.GetButtonDown("Pause") && paused == false) {
 			Time.timeScale = 0;
 			paused = true;
+			pauseImg.gameObject.SetActive (true);
+			pauseTxt.enabled = true;
 		}
 		else if (Input.GetButtonDown("Pause") && paused == true) {
 			Time.timeScale = 1;
 			paused = false;
+			pauseImg.gameObject.SetActive (false);
+			pauseTxt.enabled = false;
 		}
 	}
 

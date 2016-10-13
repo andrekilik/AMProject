@@ -22,7 +22,7 @@ GameObject:
   - 222: {fileID: 222000010304317414}
   - 114: {fileID: 114000013841704696}
   m_Layer: 5
-  m_Name: BossBar
+  m_Name: PlayerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,6 +190,23 @@ GameObject:
   - 114: {fileID: 114000011267978378}
   m_Layer: 5
   m_Name: BossSlider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000014119401330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 224000013317340676}
+  - 222: {fileID: 222000010787013646}
+  - 114: {fileID: 114000012727496564}
+  m_Layer: 5
+  m_Name: BossBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.07586217, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -527,6 +544,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114000012727496564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014119401330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 8d53d6d212dbe4400b6c4c647cd253bb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114000012922240878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,7 +666,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8d53d6d212dbe4400b6c4c647cd253bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa1db8bc1185b4d9cbbd0e5b3bd7cc48, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -660,6 +704,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012710670062}
+--- !u!222 &222000010787013646
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014119401330}
 --- !u!222 &222000010793870778
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -812,6 +862,7 @@ RectTransform:
   - {fileID: 224000014202848504}
   - {fileID: 224000012295794646}
   - {fileID: 224000014039474006}
+  - {fileID: 224000013317340676}
   - {fileID: 224000013147434656}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -844,6 +895,24 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010063999516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2422984, y: 1.7859722, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 224000012979303352}
+  m_RootOrder: 5
+  m_AnchorMin: {x: 0, y: 0.83300006}
+  m_AnchorMax: {x: 0.22433496, y: 0.8717537}
+  m_AnchoredPosition: {x: 108.6, y: 1.1}
+  m_SizeDelta: {x: -10, y: 89}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224000013317340676
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014119401330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.416027, y: 1.4437549, z: 1}
